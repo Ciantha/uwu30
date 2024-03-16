@@ -6,8 +6,6 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
 
 / {
     combos {
@@ -27,48 +25,77 @@
     };
 };
 
-&mt {
-    tapping-term-ms = <400>;
-};
+&mt { tapping-term-ms = <400>; };
 
 / {
+    behaviors {
+        semicolon: semicolon {
+            compatible = "zmk,behavior-mod-morph";
+            label = "SEMICOLON";
+            bindings = <&kp COMMA>, <&kp SEMI>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        colon: colon {
+            compatible = "zmk,behavior-mod-morph";
+            label = "COLON";
+            bindings = <&kp DOT>, <&kp SEMI>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+            keep-mods = <(MOD_RSFT|MOD_LSFT)>;
+        };
+
+        plus_equals: plus_equals {
+            compatible = "zmk,behavior-hold-tap";
+            label = "PLUS_EQUALS";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "balanced";
+            hold-trigger-key-positions = <28>;
+            tapping-term-ms = <135>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-    &kp Q           &kp W           &kp E           &kp R           &kp T           &kp Y           &kp U           &kp I           &kp O           &kp P
-    &mt LGUI A      &mt LALT S      &mt LCTRL D     &mt LSHFT F     &kp G           &kp H           &mt RSHFT J     &mt RCTRL K     &mt RALT L      &kp ENTER
-    &kp Z           &kp X           &kp C           &kp V           &kp B           &kp N           &kp M           &kp COMMA       &kp DOT         &kp SLASH
-    &kp ESC                         &kp SEMI        &lt 1 SPACE     &lt 1 SPACE     &kp BSPC                        &kp SQT                         &mo 2
-
+&kp Q      &kp W  &kp E        &kp R            &kp T  &kp Y      &kp U  &kp I            &kp O   &kp P
+&lt 2 A    &kp S  &mt LSHFT D  &kp F            &kp G  &kp H      &kp J  &mt RSHFT K      &kp L   &kp RA(O)
+&kp Z      &kp X  &kp C        &kp V            &kp B  &kp N      &kp M  &semicolon       &colon  &kp SLASH
+&kp LCTRL         &kp LALT     &lt 1 BACKSPACE  &none  &kp SPACE         &kp PRINTSCREEN          &kp LGUI
             >;
         };
 
         nav_layer {
             bindings = <
-    &kp ESC         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &kp BSPC
-    &trans          &trans          &trans          &trans          &trans          &trans          &trans          &kp SEMI        &kp SQT         &trans
-    &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &mo 2
-    &trans                          &trans          &trans          &trans          &trans                          &trans                          &trans
+&kp EXCL   &kp AT     &kp HASH       &kp DOLLAR  &kp PERCENT     &kp CARET        &kp AMPERSAND  &kp ASTERISK      &kp GRAVE  &kp BACKSLASH
+&kp N1     &kp N2     &kp N3         &kp N4      &kp N5          &kp N6           &kp N7         &kp N8            &kp N9     &kp N0
+&kp MINUS  &kp UNDER  &kp LESS_THAN  &kp LPAR    &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp RPAR       &kp GREATER_THAN  &trans     &mo 2
+&trans                &trans         &trans      &trans          &trans                          &trans                       &trans
             >;
         };
 
         symbol_layer {
             bindings = <
-    &kp N1          &kp N2          &kp N3          &kp N4          &kp N5          &kp N6          &kp N7          &kp N8          &kp N9          &kp N0
-    &kp MINUS       &kp EQUAL       &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-    &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-    &trans                          &trans          &trans          &trans          &trans                          &trans                          &trans
+&kp N1     &kp N2     &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0
+&kp MINUS  &kp EQUAL  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans                &trans  &trans  &trans  &trans          &trans          &trans
             >;
         };
 
         f_layer {
             bindings = <
-    &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-    &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-    &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
-    &trans                          &trans          &trans          &trans          &trans                          &trans                          &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans          &trans  &trans  &trans  &trans          &trans          &trans
             >;
         };
     };
