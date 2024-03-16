@@ -55,8 +55,7 @@
 
             #binding-cells = <2>;
             flavor = "balanced";
-            hold-trigger-key-positions = <28>;
-            tapping-term-ms = <135>;
+            tapping-term-ms = <125>;
         };
     };
 
@@ -74,10 +73,10 @@
 
         nav_layer {
             bindings = <
-&kp EXCL   &kp AT     &kp HASH       &kp DOLLAR  &kp PERCENT     &kp CARET        &kp AMPERSAND  &kp ASTERISK      &kp GRAVE  &kp BACKSLASH
-&kp N1     &kp N2     &kp N3         &kp N4      &kp N5          &kp N6           &kp N7         &kp N8            &kp N9     &kp N0
-&kp MINUS  &kp UNDER  &kp LESS_THAN  &kp LPAR    &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp RPAR       &kp GREATER_THAN  &trans     &mo 2
-&trans                &trans         &trans      &trans          &trans                          &trans                       &trans
+&kp EXCL   &kp AT     &kp HASH       &kp DOLLAR  &kp PERCENT     &kp CARET        &kp AMPERSAND  &kp ASTERISK      &kp GRAVE                &kp BACKSLASH
+&kp N1     &kp N2     &kp N3         &kp N4      &kp N5          &kp N6           &kp N7         &kp N8            &kp N9                   &kp N0
+&kp MINUS  &kp UNDER  &kp LESS_THAN  &kp LPAR    &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp RPAR       &kp GREATER_THAN  &plus_equals PLUS EQUAL  &mo 2
+&trans                &trans         &trans      &trans          &trans                          &trans                                     &trans
             >;
         };
 
