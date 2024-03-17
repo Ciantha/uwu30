@@ -11,16 +11,81 @@
     combos {
         compatible = "zmk,combos";
 
-        combo_mo1 {
-            timeout-ms = <100>;
-            key-positions = <1 2>;
-            bindings = <&mo 1>;
+        combo_esc {
+            bindings = <&kp ESCAPE>;
+            key-positions = <0 1>;
+            layers = <0 1>;
+            timeout-ms = <30>;
         };
 
-        combo_mo2 {
-            timeout-ms = <100>;
-            key-positions = <28 29>;
-            bindings = <&mo 2>;
+        combo_del {
+            bindings = <&kp DELETE>;
+            key-positions = <0 2>;
+            layers = <0 1>;
+            timeout-ms = <30>;
+        };
+
+        combo_tab {
+            bindings = <&kp TAB>;
+            key-positions = <11 12>;
+            layers = <0 1>;
+            timeout-ms = <30>;
+        };
+
+        combo_single_quote {
+            bindings = <&kp SINGLE_QUOTE>;
+            key-positions = <6 7>;
+            layers = <0 1>;
+            timeout-ms = <30>;
+        };
+
+        combo_double_quote {
+            bindings = <&kp DOUBLE_QUOTES>;
+            key-positions = <6 7 8>;
+            layers = <0 1>;
+            timeout-ms = <30>;
+        };
+
+        combo_enter {
+            bindings = <&kp ENTER>;
+            key-positions = <19 18 17>;
+            layers = <0 1>;
+            timeout-ms = <30>;
+        };
+
+        combo_aa {
+            bindings = <&kp RA(W)>;
+            key-positions = <8 9>;
+            layers = <0 1>;
+            timeout-ms = <30>;
+        };
+
+        combo_ae {
+            bindings = <&kp RA(A)>;
+            key-positions = <18 19>;
+            layers = <0 1>;
+            timeout-ms = <30>;
+        };
+
+        combo_question {
+            bindings = <&kp QUESTION>;
+            key-positions = <27 26>;
+            layers = <0 1>;
+            timeout-ms = <30>;
+        };
+
+        combo_slash {
+            bindings = <&kp SLASH>;
+            key-positions = <27 28>;
+            layers = <0 1>;
+            timeout-ms = <30>;
+        };
+
+        combo_capsword {
+            bindings = <&caps_word>;
+            key-positions = <12 17>;
+            layers = <0 1>;
+            timeout-ms = <30>;
         };
     };
 };
@@ -65,27 +130,45 @@
         default_layer {
             bindings = <
 &kp Q      &kp W  &kp E        &kp R            &kp T  &kp Y      &kp U  &kp I            &kp O   &kp P
-&lt 2 A    &kp S  &mt LSHFT D  &kp F            &kp G  &kp H      &kp J  &mt RSHFT K      &kp L   &kp RA(O)
+&lt 3 A    &kp S  &mt LSHFT D  &kp F            &kp G  &kp H      &kp J  &mt RSHFT K      &kp L   &kp RA(O)
 &kp Z      &kp X  &kp C        &kp V            &kp B  &kp N      &kp M  &semicolon       &colon  &kp SLASH
-&kp LCTRL         &kp LALT     &lt 1 BACKSPACE  &none  &kp SPACE         &kp PRINTSCREEN          &kp LGUI
+&kp LCTRL         &kp LALT     &lt 2 BACKSPACE  &none  &kp SPACE         &kp PRINTSCREEN          &kp LGUI
             >;
         };
 
-        nav_layer {
+        mac_layer {
+            bindings = <
+&kp Q     &kp W  &kp E        &kp R            &kp T  &kp Y      &kp U  &kp I           &kp O   &kp P
+&lt 3 A   &kp S  &mt LSHFT D  &kp F            &kp G  &kp H      &kp J  &mt RSHFT K     &kp L   &kp RA(O)
+&kp Z     &kp X  &kp C        &kp V            &kp B  &kp N      &kp M  &semicolon      &colon  &kp SLASH
+&kp LCMD         &kp LALT     &lt 2 BACKSPACE  &none  &kp SPACE         &kp LS(LG(N5))          &kp LCTRL
+            >;
+        };
+
+        num_sym {
             bindings = <
 &kp EXCL   &kp AT     &kp HASH       &kp DOLLAR  &kp PERCENT     &kp CARET        &kp AMPERSAND  &kp ASTERISK      &kp GRAVE                &kp BACKSLASH
 &kp N1     &kp N2     &kp N3         &kp N4      &kp N5          &kp N6           &kp N7         &kp N8            &kp N9                   &kp N0
-&kp MINUS  &kp UNDER  &kp LESS_THAN  &kp LPAR    &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp RPAR       &kp GREATER_THAN  &plus_equals PLUS EQUAL  &mo 2
-&trans                &trans         &trans      &trans          &trans                          &trans                                     &trans
+&kp MINUS  &kp UNDER  &kp LESS_THAN  &kp LPAR    &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp RPAR       &kp GREATER_THAN  &plus_equals PLUS EQUAL  &trans
+&trans                &kp LS(LA(S))  &trans      &trans          &trans                          &trans                                     &trans
             >;
         };
 
-        symbol_layer {
+        nav {
             bindings = <
-&kp N1     &kp N2     &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0
-&kp MINUS  &kp EQUAL  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans                &trans  &trans  &trans  &trans          &trans          &trans
+&trans  &kp LG(LEFT)  &kp UP     &kp LG(RIGHT)  &trans     &trans    &trans  &trans  &trans  &trans
+&trans  &kp LEFT      &kp DOWN   &kp RIGHT      &kp END    &trans    &trans  &trans  &trans  &trans
+&trans  &kp LC(X)     &kp LC(C)  &kp LC(V)      &kp LC(Z)  &trans    &trans  &trans  &trans  &trans
+&trans                &kp CAPS   &kp LBKT       &trans     &kp RBKT          &trans          &trans
+            >;
+        };
+
+        nav_mac {
+            bindings = <
+&trans  &kp LC(LEFT)  &trans     &kp LC(RIGHT)  &trans               &trans  &trans  &trans  &trans  &trans
+&trans  &trans        &trans     &trans         &kp LG(RIGHT_ARROW)  &trans  &trans  &trans  &trans  &trans
+&trans  &kp LG(X)     &kp LG(C)  &kp LG(V)      &kp LG(Z)            &trans  &trans  &trans  &trans  &trans
+&trans                &trans     &trans         &trans               &trans          &trans          &trans
             >;
         };
 
@@ -96,6 +179,15 @@
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans          &trans  &trans  &trans  &trans          &trans          &trans
             >;
+        };
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        mac_navigation {
+            if-layers = <1 3>;
+            then-layer = <4>;
         };
     };
 };
