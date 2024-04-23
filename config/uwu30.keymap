@@ -128,7 +128,7 @@
         backspace: backspace {
             compatible = "zmk,behavior-hold-tap";
             label = "BACKSPACE";
-            bindings = <&lt>, <&kp>;
+            bindings = <&mo>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
@@ -167,10 +167,10 @@
 
         mac_layer {
             bindings = <
-&kp Q     &kp W  &kp E        &kp R            &kp T  &kp Y      &kp U  &kp I           &kp O   &kp P
-&lt 3 A   &kp S  &mt LSHFT D  &kp F            &kp G  &kp H      &kp J  &mt RSHFT K     &kp L   &kp RA(O)
-&kp Z     &kp X  &kp C        &kp V            &kp B  &kp N      &kp M  &semicolon      &colon  &kp RSHFT
-&kp LCMD         &kp LALT     &lt 2 BACKSPACE  &none  &kp SPACE         &kp LS(LG(N5))          &kp LCTRL
+&kp Q     &kp W  &kp E        &kp R                   &kp T  &kp Y      &kp U  &kp I           &kp O   &kp P
+&lt 3 A   &kp S  &mt LSHFT D  &kp F                   &kp G  &kp H      &kp J  &mt RSHFT K     &kp L   &kp RA(O)
+&kp Z     &kp X  &kp C        &kp V                   &kp B  &kp N      &kp M  &semicolon      &colon  &kp RSHFT
+&kp LCMD         &kp LALT     &backspace 2 BACKSPACE  &none  &kp SPACE         &kp LS(LG(N5))          &kp LCTRL
             >;
         };
 
