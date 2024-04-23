@@ -124,6 +124,18 @@
             flavor = "balanced";
             tapping-term-ms = <125>;
         };
+
+        backspace: backspace {
+            compatible = "zmk,behavior-hold-tap";
+            label = "BACKSPACE";
+            bindings = <&lt>, <&kp>;
+
+            #binding-cells = <2>;
+            hold-trigger-key-positions = <32>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <50>;
+            flavor = "balanced";
+        };
     };
 
     macros {
@@ -147,10 +159,10 @@
 
         default_layer {
             bindings = <
-&kp Q      &kp W  &kp E        &kp R            &kp T  &kp Y      &kp U  &kp I            &kp O   &kp P
-&lt 3 A    &kp S  &mt LSHFT D  &kp F            &kp G  &kp H      &kp J  &mt RSHFT K      &kp L   &kp RA(O)
-&kp Z      &kp X  &kp C        &kp V            &kp B  &kp N      &kp M  &semicolon       &colon  &kp RSHFT
-&kp LCTRL         &kp LALT     &lt 2 BACKSPACE  &none  &kp SPACE         &kp PRINTSCREEN          &kp LGUI
+&kp Q      &kp W  &kp E        &kp R                   &kp T  &kp Y      &kp U  &kp I            &kp O   &kp P
+&lt 3 A    &kp S  &mt LSHFT D  &kp F                   &kp G  &kp H      &kp J  &mt RSHFT K      &kp L   &kp RA(O)
+&kp Z      &kp X  &kp C        &kp V                   &kp B  &kp N      &kp M  &semicolon       &colon  &kp RSHFT
+&kp LCTRL         &kp LALT     &backspace 2 BACKSPACE  &none  &kp SPACE         &kp PRINTSCREEN          &kp LGUI
             >;
         };
 
